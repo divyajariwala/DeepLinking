@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {View, Text, TouchableOpacity, FlatList} from 'react-native';
+import React, { Component } from 'react';
+import { View, Text, TouchableOpacity, FlatList } from 'react-native';
 
 export default class HomeScreen extends Component {
   constructor(props) {
@@ -32,15 +32,18 @@ export default class HomeScreen extends Component {
   );
   render() {
     return (
-      <View style={{flex: 1}}>
-        <View style={{paddingHorizontal: 20, paddingVertical: 20}}>
+      <View style={{ flex: 1 }}>
+        <View style={{ paddingHorizontal: 20, paddingVertical: 20 }}>
           <FlatList
             data={this.state.List}
             keyExtractor={(item) => item.id}
             ItemSeparatorComponent={this.Separator}
-            renderItem={({item}) => (
-              <TouchableOpacity onPress={() => alert('Nav to details screen')}>
-                <Text style={{fontSize: 24}}>{item.name}</Text>
+            renderItem={({ item }) => (
+              <TouchableOpacity onPress={() => {
+                alert('Nav to details screen')
+                this.props.navigation.navigate('Details')
+              }}>
+                <Text style={{ fontSize: 24 }}>{item.name}</Text>
               </TouchableOpacity>
             )}
           />
